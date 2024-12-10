@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.GridLayout
 import android.widget.Button
+<<<<<<< HEAD
 import android.widget.Toast
+=======
+>>>>>>> Juan
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         boardGrid = findViewById(R.id.boardGrid)
 
+<<<<<<< HEAD
         val gameId = "gameId123"
         val conexion = Conexion()
         conexion.listenToPlayerPositions(gameId) { player1Position, player2Position ->
@@ -40,6 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.initializeGame()
 
+=======
+>>>>>>> Juan
         viewModel.boardData.observe(this) { board ->
             viewModel.drawBoard(boardGrid, board)
         }

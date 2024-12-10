@@ -24,6 +24,7 @@ class LogicGame(private val context: Context) {
         Pair(60, 43) to Color.parseColor("#c44e4e")
     )
 
+<<<<<<< HEAD
     // Métodos para acceder a las escaleras y serpientes
     fun getEscaleras(): Map<Pair<Int, Int>, Int> {
         return escaleras
@@ -33,6 +34,8 @@ class LogicGame(private val context: Context) {
         return serpientes
     }
 
+=======
+>>>>>>> Juan
     fun generateBoard(rows: Int, columns: Int) {
         val board = mutableListOf<Int>()
         var cellNumber = 1
@@ -50,12 +53,20 @@ class LogicGame(private val context: Context) {
                 }
             }
         }
+<<<<<<< HEAD
         boardData.value = board
+=======
+        boardData.value = board // Actualiza el tablero con los números generados
+>>>>>>> Juan
     }
 
     fun drawBoard(boardGrid: GridLayout, board: List<Int>, viewModel: GameViewModel) {
         boardGrid.removeAllViews()
+<<<<<<< HEAD
         boardGrid.columnCount = 8
+=======
+        boardGrid.columnCount = 8 // 8 columnas en el tablero
+>>>>>>> Juan
 
         val rows = 8
         val columns = 8
@@ -71,8 +82,13 @@ class LogicGame(private val context: Context) {
                     text = cellNumber.toString()
                     textSize = 18f
                     gravity = android.view.Gravity.CENTER
+<<<<<<< HEAD
                     setBackgroundResource(android.R.drawable.dialog_holo_light_frame)
                     setBackgroundColor(getCellColor(cellNumber))
+=======
+                    setBackgroundResource(android.R.drawable.dialog_holo_light_frame) // Fondo de celda, puedes personalizarlo
+                    setBackgroundColor(getCellColor(cellNumber)) // Asignar color basado en la lógica de celdas especiales
+>>>>>>> Juan
                     val params = GridLayout.LayoutParams().apply {
                         width = 0
                         height = 0
@@ -87,23 +103,38 @@ class LogicGame(private val context: Context) {
     }
 
     fun getCellColor(cellNumber: Int): Int {
+<<<<<<< HEAD
         // Si es una escalera, el jugador sube
         escaleras.forEach { (rango, color) ->
             if (cellNumber == rango.first) {
                 return color
             } else if (cellNumber == rango.second) {
                 return color
+=======
+        escaleras.forEach { (rango, color) ->
+            if (cellNumber == rango.first || cellNumber == rango.second) {
+                return color // Si la celda es una escalera, retornamos el color correspondiente
+>>>>>>> Juan
             }
         }
 
         serpientes.forEach { (rango, color) ->
+<<<<<<< HEAD
             if (cellNumber == rango.first) {
                 return color
             } else if (cellNumber == rango.second) {
                 return color
+=======
+            if (cellNumber == rango.first || cellNumber == rango.second) {
+                return color // Si la celda es una serpiente, retornamos el color correspondiente
+>>>>>>> Juan
             }
         }
 
         return Color.WHITE
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> Juan
