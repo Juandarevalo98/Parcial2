@@ -24,6 +24,15 @@ class LogicGame(private val context: Context) {
         Pair(60, 43) to Color.parseColor("#c44e4e")
     )
 
+    // Métodos para acceder a las escaleras y serpientes
+    fun getEscaleras(): Map<Pair<Int, Int>, Int> {
+        return escaleras
+    }
+
+    fun getSerpientes(): Map<Pair<Int, Int>, Int> {
+        return serpientes
+    }
+
     fun generateBoard(rows: Int, columns: Int) {
         val board = mutableListOf<Int>()
         var cellNumber = 1
@@ -77,16 +86,22 @@ class LogicGame(private val context: Context) {
         }
     }
 
+    // Esta función verifica si el jugador ha caído en una escalera o serpiente
     fun getCellColor(cellNumber: Int): Int {
+        // Si es una escalera, el jugador sube
         escaleras.forEach { (rango, color) ->
-            if (cellNumber == rango.first || cellNumber == rango.second) {
-                return color // Si la celda es una escalera, retornamos el color correspondiente
+            if (cellNumber == rango.first) {
+                return color // Escalera: Subir a la segunda posición
+            } else if (cellNumber == rango.second) {
+                return color // Escalera: Subir a la segunda posición
             }
         }
 
         serpientes.forEach { (rango, color) ->
-            if (cellNumber == rango.first || cellNumber == rango.second) {
-                return color // Si la celda es una serpiente, retornamos el color correspondiente
+            if (cellNumber == rango.first) {
+                return color
+            } else if (cellNumber == rango.second) {
+                return color
             }
         }
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.GridLayout
 import android.widget.Button
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +28,19 @@ class MainActivity : AppCompatActivity() {
         btnPlayer2 = findViewById(R.id.btnPlayer2)
 
         boardGrid = findViewById(R.id.boardGrid)
+
+        val gameId = "gameId123"
+        val conexion = Conexion()
+        conexion.listenToPlayerPositions(gameId) { player1Position, player2Position ->
+            // Mostrar las posiciones de los jugadores con un Toast
+            Toast.makeText(this, "Player 1 está en la posición: $player1Position", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Player 2 está en la posición: $player2Position", Toast.LENGTH_SHORT).show()
+
+            // Actualizar el tablero con las nuevas posiciones
+            viewModel.updateBoard(player1Position, player2Position)
+        }
+
+        viewModel.initializeGame()
 
         viewModel.boardData.observe(this) { board ->
             viewModel.drawBoard(boardGrid, board)
